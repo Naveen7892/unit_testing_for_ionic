@@ -1,0 +1,67 @@
+http://cgewecke.github.io/ionic-karma-guide/
+
+$ npm install karma --save-dev
+$ npm install -g karma-cli
+$ npm install jasmine-core --save-dev
+$ npm install karma-jasmine@2_0 --save-dev
+$ npm install karma-chrome-launcher --save-dev
+$ npm install karma-ng-html2js-preprocessor --save-dev
+$ npm install karma-mocha-reporter --save-dev
+$ npm install jquery --save-dev
+$ bower install angular-mocks --save-dev
+
+>> bower install angular-mocks@1.5.3 --save-dev
+
+>> bower install ngCordova --save
+
+$ karma init
+
+$ mkdir tests
+$ mkdir tests/controllers
+$ mkdir tests/directives
+$ mkdir tests/services
+
+
+- Add gulp task -
+
+var Server = require('karma').Server;
+
+gulp.task('test', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: false
+  }, done).start()
+});
+
+>> gulp test
+
+
+Inside controllers create files for the upcoming tests. 
+eg:
+- tabchats.controller.tests.js
+- chats.controller.tests.js
+- addContact.controller.tests.js
+
+- karma.config.js -
+
+files: [
+   
+      'node_modules/jquery/dist/jquery.min.js',
+      'www/lib/ionic/js/ionic.bundle.js',
+      'www/lib/angular-mocks/angular-mocks.js', 
+
+      "www/lib/ngCordova/dist/ng-cordova.js",
+      "www/lib/ngCordova/dist/ng-cordova-mocks.js",
+      
+      'www/js/app.js',
+      'www/js/addContact.js',
+      'www/js/controllers.js',
+      'www/js/services.js',
+
+      'www/templates/*.html',
+      
+      'tests/**/*.js',
+
+   ],  
+
+
